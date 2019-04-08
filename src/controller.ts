@@ -10,12 +10,7 @@ type TParams = {
 export function generate({ appYamlTemplatePath, envPrefix }: TParams): string {
     const KEY_PREFIX = 'APP_'
 
-    console.log(__dirname)
-    console.log(path.resolve(appYamlTemplatePath))
-
     const parsed = YAML.parse(fs.readFileSync(path.resolve(appYamlTemplatePath), 'utf8')) || {}
-
-
 
     const newEnv: Record<string, string> = {}
 
