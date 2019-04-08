@@ -1,10 +1,10 @@
 {
   "name": "gae-ayaml-env",
   "description": "Generates an app.yaml file from a template and environment variables",
-  "version": "0.0.0",
+  "version": "0.0.3",
   "author": "Robert Lancer",
   "bin": {
-    "gae-env": "./bin/run"
+    "gae-ayaml-env": "./bin/run"
   },
   "bugs": "https://gitlab.com/collaborizm-community/gae-appyaml-env-generate/issues",
   "dependencies": {
@@ -34,7 +34,7 @@
   "license": "MIT",
   "main": "lib/index.js",
   "oclif": {
-    "bin": "gae-env-gen"
+    "bin": "gae-ayaml-env"
   },
   "repository": "https://gitlab.com/collaborizm-community/gae-appyaml-env-generate",
   "scripts": {
