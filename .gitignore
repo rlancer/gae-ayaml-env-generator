@@ -7,3 +7,5 @@
 /yarn.lock
 node_modules
 /tsconfig.tsbuildinfo
+/app.template.yaml
+/app.yaml
