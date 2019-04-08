@@ -1,7 +1,7 @@
 {
   "name": "gae-ayaml-env",
   "description": "Generates an app.yaml file from a template and environment variables",
-  "version": "0.0.4",
+  "version": "0.0.3",
   "author": "Robert Lancer",
   "bin": {
     "gae-ayaml-env": "./bin/run"
@@ -38,7 +38,7 @@
   },
   "repository": "https://gitlab.com/collaborizm-community/gae-appyaml-env-generate",
   "scripts": {
-    "prepack": "rm -rf lib && tsc -b",
+    "prepack": "rm -rf lib && tsc",
     "test": "echo NO TESTS"
   },
   "types": "lib/index.d.ts"
