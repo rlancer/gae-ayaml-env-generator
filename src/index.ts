@@ -1,5 +1,5 @@
 import { Command, flags } from '@oclif/command'
-import { generate } from './controller';
+import { generate } from './controller'
 
 class AppyamlGenerator extends Command {
   static description = 'describe the command here'
@@ -10,7 +10,7 @@ class AppyamlGenerator extends Command {
     help: flags.help({ char: 'h' }),
     // flag with no value (-f, --force)
     prefix: flags.string({ char: 'p', description: 'Enviorment varible prefix, defaults to ENV_' }),
-    force: flags.boolean({ char: 'f' }),
+    force: flags.boolean({ char: 'f' })
   }
 
   static args = [{ name: 'file' }]
