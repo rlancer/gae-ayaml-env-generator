@@ -4,9 +4,9 @@ Google App Engine - app.yaml environment variable generator for CI / CD systems
 Generates an app.yaml file from a template and environment variables, designed for use with GitLab CI / CD system
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
-[![Version](https://img.shields.io/npm/v/gae-ayaml-env.svg)](https://npmjs.org/package/appyaml-generator)
-[![Downloads/week](https://img.shields.io/npm/dw/gae-ayaml-env.svg)](https://npmjs.org/package/appyaml-generator)
-[![License](https://img.shields.io/npm/l/gae-ayaml-env.svg)](https://github.com/code/appyaml-generator/blob/master/package.json)
+[![Version](https://img.shields.io/npm/v/gae-ayaml-env.svg)](https://npmjs.org/package/gae-ayaml-env)
+[![Downloads/week](https://img.shields.io/npm/dw/gae-ayaml-env.svg)](https://npmjs.org/package/gae-ayaml-env)
+[![License](https://img.shields.io/npm/l/gae-ayaml-env.svg)](https://github.com/code/gae-ayaml-env/blob/master/package.json)
 
 
 # Usage
