@@ -1,7 +1,7 @@
-appyaml-generator
+Google App Engine - app.yaml enviorment varible generator
 =================
 
-Generates an app.yaml file from a template and enviorment varibles 
+Generates an app.yaml file from a template and enviorment varibles, designed for use with GitLab CI / CD system
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
 [![Version](https://img.shields.io/npm/v/gae-ayaml-env.svg)](https://npmjs.org/package/appyaml-generator)
@@ -10,6 +10,7 @@ Generates an app.yaml file from a template and enviorment varibles
 
 <!-- toc -->
 # Usage
+
 <!-- usage -->
 # Commands
 <!-- commands -->

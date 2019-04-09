@@ -9,3 +9,4 @@ node_modules
 /tsconfig.tsbuildinfo
 /app.template.yaml
 /app.yaml
+/.idea
