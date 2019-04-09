@@ -11,7 +11,7 @@ Generates an app.yaml file from a template and environment variables, designed f
 
 # Usage
 
-Set your environment variables in GitLab, prefix an variable, you'd like to persist with "APP_"   
+Set your environment variables in GitLab (or other system), prefix variables you'd like to persist in app.yaml with "APP_"   
 
 ![Environment variables in GitLab](https://gitlab.com/collaborizm-community/gae-appyaml-env-generate/uploads/a490e948a1f26f08d6cf77e180b826c6/image.png)
 
@@ -31,7 +31,7 @@ env_variables:
   NODE_ENV: 'production'
 ```
 
-In your CI / CD process run `npx gae-ayaml-env` to emit a populated app.yaml file
+In your CI / CD process run `gae-ayaml-env` to emit a populated app.yaml file
 
 Example for GitLab
 
@@ -41,12 +41,10 @@ deploy:
   script:
     - npm i
     - npm run build
-    - npm run generate_app_yaml
+    - npx gae-ayaml-env
     - echo $GCLOUD_SERVICE > /tmp/$CI_PIPELINE_ID.json
     - gcloud auth activate-service-account --key-file /tmp/$CI_PIPELINE_ID.json
     - gcloud --quiet --project $GCLOUD_PROJECT_ID app deploy app.yaml
-  tags:
-    - theonlyrunnerthatshouldeverbeusedbycollaborizm
   only:
     - prod
 ```
