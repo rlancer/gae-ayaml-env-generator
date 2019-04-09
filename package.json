@@ -29,7 +29,13 @@
   ],
   "homepage": "https://gitlab.com/collaborizm-community/gae-appyaml-env-generate",
   "keywords": [
-    "oclif"
+    "oclif",
+    "typescript",
+    "google app engine",
+    "gae",
+    "nodejs",
+    "gitlab",
+    "ci / cd"
   ],
   "license": "MIT",
   "main": "lib/index.js",
