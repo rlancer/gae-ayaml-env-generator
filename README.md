@@ -1,7 +1,7 @@
 Google App Engine - app.yaml environment variable generator for CI / CD systems 
 =================
 
-Generates an app.yaml file from a template and environment variables, designed for use with GitLab CI / CD system
+Generates an app.yaml file from a template and environment variables, designed for use with GitLab's CI / CD system.
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
 [![Version](https://img.shields.io/npm/v/gae-ayaml-env.svg)](https://npmjs.org/package/gae-ayaml-env)
@@ -11,7 +11,7 @@ Generates an app.yaml file from a template and environment variables, designed f
 
 # Usage
 
-Set your environment variables in GitLab (or other system), prefix variables you'd like to persist in app.yaml with "APP_"   
+Set your environment variables in GitLab (or other system), prefix variables you'd like to persist in app.yaml with "APP_", for example:   
 
 ![Environment variables in GitLab](https://gitlab.com/collaborizm-community/gae-appyaml-env-generate/uploads/a490e948a1f26f08d6cf77e180b826c6/image.png)
 
@@ -31,7 +31,7 @@ env_variables:
   NODE_ENV: 'production'
 ```
 
-In your CI / CD process run `gae-ayaml-env` to emit a populated app.yaml file
+In your CI / CD process run `gae-ayaml-env` to emit a populated app.yaml file, make sure you do not commit an actual app.yaml file as it will be overwritten.
 
 Example for GitLab
 
@@ -47,4 +47,29 @@ deploy:
     - gcloud --quiet --project $GCLOUD_PROJECT_ID app deploy app.yaml
   only:
     - prod
+```
+
+The system will write an app.yaml file fully populated with all the variables prefixed with "APP_".
+
+```yaml
+runtime: nodejs10
+env: standard
+
+env_variables:
+  APIMARKET_FROM: '******************'
+  DB_DATABASE: '******************'
+  DB_HOST: '******************'
+  DB_PASSWORD: '******************'
+  DB_USER: '******************'
+  NODE_ENV: production
+  SLACK_APP_ID: '******************'
+  SLACK_BOT_TOKEN: '******************'
+  SLACK_CLIENT_ID: '******************'
+  SLACK_CLIENT_SECRET: '******************'
+  SLACK_OAUTH_REDIR: '******************'
+  SLACK_SIGNING_SECRET: '******************'
+  SLACK_TOKEN: '******************'
+  SLACK_VERIFICATION_TOKEN: '******************'
+automatic_scaling:
+  max_instances: 2
 ```
