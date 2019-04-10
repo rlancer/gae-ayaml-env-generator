@@ -1,5 +1,4 @@
-Google App Engine - app.yaml environment variable generator for CI / CD systems 
-=================
+# Google App Engine - app.yaml environment variable generator for CI / CD systems
 
 Generates an app.yaml file from a template and environment variables, designed for use with GitLab's CI / CD system.
 
@@ -8,14 +7,13 @@ Generates an app.yaml file from a template and environment variables, designed f
 [![Downloads/week](https://img.shields.io/npm/dw/gae-ayaml-env.svg)](https://npmjs.org/package/gae-ayaml-env)
 [![License](https://img.shields.io/npm/l/gae-ayaml-env.svg)](https://github.com/code/gae-ayaml-env/blob/master/package.json)
 
-
 # Usage
 
-Set your environment variables in GitLab (or other system), prefix variables you'd like to persist in app.yaml with "APP_", for example:   
+Set your environment variables in GitLab (or other system), prefix variables you'd like to persist in app.yaml with "APP\_", for example:
 
 ![Environment variables in GitLab](https://gitlab.com/collaborizm-community/gae-appyaml-env-generate/uploads/a490e948a1f26f08d6cf77e180b826c6/image.png)
 
-Create an app.template.yaml file include everything sans environment variables  
+Create an app.template.yaml file include everything sans environment variables
 
 ```yaml
 runtime: nodejs10
@@ -37,7 +35,7 @@ Example for GitLab
 
 ```yaml
 deploy:
-  image: "rlancer/gcloud-node:LTS-229"
+  image: 'rlancer/gcloud-node:LTS-229'
   script:
     - npm i
     - npm run build
@@ -49,7 +47,7 @@ deploy:
     - prod
 ```
 
-The system will write an app.yaml file fully populated with all the variables prefixed with "APP_".
+The system will write an app.yaml file fully populated with all the variables prefixed with "APP\_".
 
 ```yaml
 runtime: nodejs10
@@ -73,3 +71,5 @@ env_variables:
 automatic_scaling:
   max_instances: 2
 ```
+
+> Special thanks to [@dannyzen](https://github.com/dannyzen) from Google for helping Collaborizm move to GCP.
