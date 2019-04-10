@@ -6,7 +6,7 @@
   "bin": {
     "gae-ayaml-env": "./bin/run"
   },
-  "bugs": "https://gitlab.com/collaborizm-community/gae-appyaml-env-generate/issues",
+  "bugs": "https://github.com/rlancer/gae-ayaml-env-generator/issues",
   "dependencies": {
     "@oclif/command": "^1.5.12",
     "@oclif/config": "^1.12.12",
@@ -27,7 +27,7 @@
     "/bin",
     "/lib"
   ],
-  "homepage": "https://gitlab.com/collaborizm-community/gae-appyaml-env-generate",
+  "homepage": "https://github.com/rlancer/gae-ayaml-env-generator",
   "keywords": [
     "oclif",
     "typescript",
@@ -42,7 +42,7 @@
   "oclif": {
     "bin": "gae-ayaml-env"
   },
-  "repository": "https://gitlab.com/collaborizm-community/gae-appyaml-env-generate",
+  "repository": "https://github.com/rlancer/gae-ayaml-env-generator",
   "scripts": {
     "prepack": "rm -f tsconfig.tsbuildinfo && rm -rf lib && tsc",
     "test": "echo NO TESTS"
