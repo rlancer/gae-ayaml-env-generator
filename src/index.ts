@@ -1,34 +1,32 @@
 import { Command, flags } from '@oclif/command'
 import { generate } from './controller'
+import fs from 'fs'
 
-class AppyamlGenerator extends Command {
-  static description = 'describe the command here'
+class AppYamlGenerator extends Command {
+  static description = 'Generate the app.yaml file for App Engine'
 
   static flags = {
     // add --version flag to show CLI version
     version: flags.version({ char: 'v' }),
     help: flags.help({ char: 'h' }),
-    // flag with no value (-f, --force)
-    prefix: flags.string({ char: 'p', description: 'Enviorment varible prefix, defaults to ENV_' }),
-    force: flags.boolean({ char: 'f' })
+    prefix: flags.string({ description: 'Enviorment varible prefix, defaults to APP_' }),
   }
 
-  static args = [{ name: 'file' }]
+  static args = [{ name: 'template' }]
 
   async run() {
-    const { args, flags } = this.parse(AppyamlGenerator)
+    const { args, flags } = this.parse(AppYamlGenerator)
 
-    const fileName = args.file || 'app.template.yaml'
-    const prefix = flags.prefix || 'ENV_'
+    const prefix = flags.prefix || 'APP_'
+    const input = fs.readFileSync(0, 'utf-8')
 
     try {
-      const newFile = generate({ appYamlTemplatePath: fileName, envPrefix: prefix })
-      this.log(`Generated new app.yaml
-    ${newFile}`)
+      const output = generate({ input, envPrefix: prefix })
+      process.stdout.write(output)
     } catch (err) {
       this.error(err)
     }
   }
 }
 
-export = AppyamlGenerator
+export = AppYamlGenerator
