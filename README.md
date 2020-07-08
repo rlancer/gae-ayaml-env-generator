@@ -2,12 +2,28 @@
 
 Generates an app.yaml file from a template and environment variables, designed for use with GitLab's CI / CD system.
 
-[![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
-[![Version](https://img.shields.io/npm/v/gae-ayaml-env.svg)](https://npmjs.org/package/gae-ayaml-env)
-[![Downloads/week](https://img.shields.io/npm/dw/gae-ayaml-env.svg)](https://npmjs.org/package/gae-ayaml-env)
-[![License](https://img.shields.io/npm/l/gae-ayaml-env.svg)](https://github.com/code/gae-ayaml-env/blob/master/package.json)
+[![Version](https://img.shields.io/npm/v/gae-yaml-env.svg)](https://npmjs.org/package/gae-yaml-env)
+[![Downloads/week](https://img.shields.io/npm/dw/gae-yaml-env.svg)](https://npmjs.org/package/gae-yaml-env)
+[![License](https://img.shields.io/npm/l/gae-yaml-env.svg)](https://github.com/code/gae-yaml-env/blob/master/package.json)
 
 # Usage
+
+```
+gae-yaml-env [file]
+
+Generate the app.yaml file for App Engine
+
+Positionals:
+  file  The name of the template file, use 0 for stdin
+                                                  [default: "app.template.yaml"]
+
+Options:
+  --prefix   Environment variable prefix, defaults to APP_     [default: "APP_"]
+  --version  Show version number                                       [boolean]
+  --help     Show help                                                 [boolean]
+```
+
+# Gitlab Example
 
 Set your environment variables in GitLab (or other system), prefix variables you'd like to persist in app.yaml with "APP\_", for example:
 
@@ -29,22 +45,30 @@ env_variables:
   NODE_ENV: 'production'
 ```
 
-In your CI / CD process run `gae-ayaml-env` to emit a populated app.yaml file, make sure you do not commit an actual app.yaml file as it will be overwritten.
+In your CI / CD process run `gae-yaml-env` to emit a populated app.yaml file, make sure you do not commit an actual app.yaml file as it will be overwritten.
 
 Example for GitLab
 
 ```yaml
-deploy:
-  image: 'rlancer/gcloud-node:LTS-229'
+generate:
+  image: node:12
   script:
-    - npm i
-    - npm run build
-    - npx gae-ayaml-env
-    - echo $GCLOUD_SERVICE > /tmp/$CI_PIPELINE_ID.json
-    - gcloud auth activate-service-account --key-file /tmp/$CI_PIPELINE_ID.json
+  - npx gae-yaml-env > app.yaml
+  artifacts:
+    paths:
+      - app.yaml
+  only:
+      - master
+
+deploy:
+  image: gcloud
+  dependencies:
+    - generate
+  script:
+    - gcloud auth activate-service-account --key-file $GCLOUD_KEY
     - gcloud --quiet --project $GCLOUD_PROJECT_ID app deploy app.yaml
   only:
-    - prod
+    - master
 ```
 
 The system will write an app.yaml file fully populated with all the variables prefixed with "APP\_".
