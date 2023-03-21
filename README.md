@@ -7,6 +7,7 @@ Generates an app.yaml file from a template and environment variables, designed f
 [![Downloads/week](https://img.shields.io/npm/dw/gae-ayaml-env.svg)](https://npmjs.org/package/gae-ayaml-env)
 [![License](https://img.shields.io/npm/l/gae-ayaml-env.svg)](https://github.com/code/gae-ayaml-env/blob/master/package.json)
 
+
 # Usage
 
 Set your environment variables in GitLab (or other system), prefix variables you'd like to persist in app.yaml with "APP\_", for example:
@@ -72,4 +73,14 @@ automatic_scaling:
   max_instances: 2
 ```
 
-> Special thanks to [@dannyzen](https://github.com/dannyzen) from Google for helping Collaborizm move to GCP.
+### Hide Output in Console
+to hide the output of the generated file in the console you can use the flag: *no-output*
+
+Example using npx:
+```
+npx gae-ayaml-env --no-output
+```
+
+### Special thanks
+
+> to [@dannyzen](https://github.com/dannyzen) from Google for helping Collaborizm move to GCP.
