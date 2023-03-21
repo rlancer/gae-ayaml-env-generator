@@ -10,7 +10,8 @@ class AppyamlGenerator extends Command {
     help: flags.help({ char: 'h' }),
     // flag with no value (-f, --force)
     prefix: flags.string({ char: 'p', description: 'Enviorment varible prefix, defaults to ENV_' }),
-    force: flags.boolean({ char: 'f' })
+    force: flags.boolean({ char: 'f' }),
+    'no-output': flags.boolean(),
   }
 
   static args = [{ name: 'file' }]
@@ -20,11 +21,16 @@ class AppyamlGenerator extends Command {
 
     const fileName = args.file || 'app.template.yaml'
     const prefix = flags.prefix || 'ENV_'
+    const noOutput = flags['no-output'] || false
 
     try {
       const newFile = generate({ appYamlTemplatePath: fileName, envPrefix: prefix })
-      this.log(`Generated new app.yaml
+      if (noOutput) {
+        console.log('Generated new app.yaml')
+      } else {
+        this.log(`Generated new app.yaml
     ${newFile}`)
+      }
     } catch (err) {
       this.error(err)
     }
